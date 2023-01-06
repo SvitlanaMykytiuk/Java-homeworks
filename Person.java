@@ -73,4 +73,5 @@ public abstract class Person {
     }
 
     public abstract void die();
+
 }

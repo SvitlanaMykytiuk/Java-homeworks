@@ -46,4 +46,5 @@ public class Pensioner extends Person {
     public void die() {
         System.out.println("Этот пенсионер умер, он заработал: " + countIncome(getAge(), pension));
     }
+
 }

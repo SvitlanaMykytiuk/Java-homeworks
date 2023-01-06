@@ -52,4 +52,5 @@ public class PensionFund {
 
         return average * KOEF_OF_PENSION * workingYears;
     }
+
 }
