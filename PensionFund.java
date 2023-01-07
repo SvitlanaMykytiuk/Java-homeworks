@@ -1,15 +1,16 @@
 public class PensionFund {
 
-    private final static double KOEF_OF_PENSION = 0.02;
+    private static double KOEF_OF_PENSION = 0.02;
+    private static final int AVERAGE_SALARY = 1500;
 
     private String name;
     private boolean isState;
-    private final int age;
+    private final String date;
 
-    public PensionFund(String name, boolean isState, int age) {
+    public PensionFund(String name, boolean isState, String date) {
         this.name = name;
         this.isState = isState;
-        this.age = age;
+        this.date = date;
     }
 
 
@@ -29,25 +30,27 @@ public class PensionFund {
         this.isState = isState;
     }
 
-    public int getAge() {
-        return age;
+    public String getDate() {
+        return date;
     }
 
 
     public double countPension(int age, double minSalary, double maxSalary) {
-        double average;
         int workingYears;
+        double average;
 
         if (age >= 60) {
             workingYears = 42;
-        } else {
+        } else if (age > 18) {
             workingYears = age - 18;
+        } else {
+            workingYears = 0;
         }
 
-        if (isState == true) {
+        if (isState) {
             average = AverageUtils.getAverageOfTwo(minSalary, maxSalary);
         } else {
-            average = AverageUtils.getAverageOfThree(minSalary, maxSalary, 1500);
+            average = AverageUtils.getAverageOfThree(minSalary, maxSalary, AVERAGE_SALARY);
         }
 
         return average * KOEF_OF_PENSION * workingYears;
