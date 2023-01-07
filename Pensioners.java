@@ -1,4 +1,4 @@
-public class Pensioner extends Person {
+public class Pensioners extends Persons {
 
     private double minSalary;
     private double maxSalary;
@@ -6,7 +6,7 @@ public class Pensioner extends Person {
 
     private double income = (getAge() - 50) * pension;
 
-    public Pensioner(String name, int age, int height, int weight, double minSalary, double maxSalary, double pension) {
+    public Pensioners(String name, int age, int height, int weight, double minSalary, double maxSalary, double pension) {
         super(name, age, height, weight);
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
