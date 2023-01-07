@@ -1,11 +1,11 @@
 public class AverageUtils {
 
-    public static double getAverageOfTwo(double a, double b) {
-        return (a + b) / 2;
+    public static double getAverageOfTwo(double first, double second) {
+        return (first + second) / 2;
     }
 
-    public static double getAverageOfThree(double a, double b, double c) {
-        return (a + b + c) / 3;
+    public static double getAverageOfThree(double first, double second, double third) {
+        return (first + second + third) / 3;
     }
 
 }
