@@ -14,38 +14,8 @@ public class PensionFund {
     }
 
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean getIsState() {
-        return isState;
-    }
-
-    public void setIsState(boolean isState) {
-        this.isState = isState;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-
-    public double countPension(int age, double minSalary, double maxSalary) {
-        int workingYears;
+    public double countPension(int workingYears, double minSalary, double maxSalary) {
         double average;
-
-        if (age >= 60) {
-            workingYears = 42;
-        } else if (age > 18) {
-            workingYears = age - 18;
-        } else {
-            workingYears = 0;
-        }
 
         if (isState) {
             average = AverageUtils.getAverageOfTwo(minSalary, maxSalary);
