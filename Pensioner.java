@@ -2,60 +2,20 @@ public class Pensioner extends Person {
 
     private double minSalary;
     private double maxSalary;
-    private boolean isState;
+    private double pension;
 
-       public Pensioner(String name, int age, int height, int weight, double minSalary, double maxSalary, boolean isState) {
+    private double income = (getAge() - 50) * pension;
+
+    public Pensioner(String name, int age, int height, int weight, double minSalary, double maxSalary, double pension) {
         super(name, age, height, weight);
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
-        this.isState = isState;
+        this.pension = pension;
     }
 
-    PensionFund pensionFund = new PensionFund(getName(), isState, getAge());
-    double pension = pensionFund.countPension(getAge(), minSalary, maxSalary);
-
-    public double getMinSalary() {
-        return minSalary;
-    }
-
-    public void setMinSalary(double minSalary) {
-        this.minSalary = minSalary;
-    }
-
-    public double getMaxSalary() {
-        return maxSalary;
-    }
-
-    public void setMaxSalary(double maxSalary) {
-        this.maxSalary = maxSalary;
-    }
-
-    public boolean getIsState() {
-        return isState;
-    }
-
-    public void setIsState(boolean isState) {
-        this.isState = isState;
-    }
-
-
-    public void printPension () {
-        System.out.println(pension);
-    }
-
-    public double countIncome(int age, double pension) {
-        double income;
-        if (age > 50) {
-            income = (age - 50) * pension;
-        } else {
-            income = 0;
-        }
-        return income;
-    }
 
     @Override
     public void die() {
-        System.out.println("Этот пенсионер умер, он заработал: " + countIncome(getAge(), pension));
+        System.out.println("Этот пенсионер умер, он заработал: " + income);
     }
-
 }
