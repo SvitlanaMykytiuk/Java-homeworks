@@ -3,7 +3,7 @@ public abstract class Person {
     private int age;
     private int height;
     private int weight;
-    private int money;
+
 
 
     public Person(String name, int age, int height, int weight) {

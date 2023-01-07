@@ -13,7 +13,6 @@ public class Pensioner extends Person {
         this.pension = pension;
     }
 
-
     @Override
     public void die() {
         System.out.println("Этот пенсионер умер, он заработал: " + income);
