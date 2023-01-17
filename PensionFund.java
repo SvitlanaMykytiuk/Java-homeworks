@@ -4,10 +4,10 @@ public class PensionFund {
     private static final int AVERAGE_SALARY = 1500;
 
     private String name;
-    private boolean isState;
+    private State isState;
     private final String date;
 
-    public PensionFund(String name, boolean isState, String date) {
+    public PensionFund(String name, State isState, String date) {
         this.name = name;
         this.isState = isState;
         this.date = date;
@@ -15,15 +15,19 @@ public class PensionFund {
 
 
     public double countPension(int workingYears, double minSalary, double maxSalary) {
-        double average;
+        double average = 0;
 
-        if (isState) {
-            average = AverageUtils.getAverageOfTwo(minSalary, maxSalary);
-        } else {
-            average = AverageUtils.getAverageOfThree(minSalary, maxSalary, AVERAGE_SALARY);
+        switch (isState) {
+            case STATE:
+                average = AverageUtils.getAverage(minSalary, maxSalary);
+                break;
+            case NOTSTATE:
+                average = AverageUtils.getAverage(minSalary, maxSalary, AVERAGE_SALARY);
+                break;
+            case SCAMMERS:
+                average = 0;
         }
 
         return average * KOEF_OF_PENSION * workingYears;
     }
-
 }
