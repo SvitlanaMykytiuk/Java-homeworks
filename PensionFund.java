@@ -33,6 +33,7 @@ public class PensionFund {
         return average * KOEF_OF_PENSION * workingYears;
     }
 
+
     @Override
     public String toString() {
         return "PensionFund{" +
