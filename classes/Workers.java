@@ -1,3 +1,9 @@
+package classes;
+
+import classes.AbleToCalculatePension;
+import classes.Persons;
+import classes.TypeOfState;
+
 public class Workers extends Persons implements AbleToCalculatePension {
 
     private double minSalary;
@@ -18,9 +24,14 @@ public class Workers extends Persons implements AbleToCalculatePension {
     @Override
     public double calculatePension() {
 
-        PensionFund pensionFund = new PensionFund("nameOfFund", true, "28-10-200");
+        PensionFund pensionFund = new PensionFund("nameOfFund", TypeOfState.STATE, "28-10-200");
 
-        return pensionFund.countPension(getAge() - 18, minSalary, maxSalary);
+        return pensionFund.countPension(getAge() - 18, minSalary, maxSalary, listOfChildren.size());
 
+    }
+
+    public void setNewSalary () {
+        minSalary = 1000;
+        maxSalary = 2000;
     }
 }

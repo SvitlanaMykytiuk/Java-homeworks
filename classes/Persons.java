@@ -1,8 +1,15 @@
+package classes;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Persons {
     private String name;
     private int age;
     private int height;
     private int weight;
+
+    List<String> listOfChildren = new ArrayList<>();
 
     public Persons(String name, int age, int height, int weight) {
         this.name = name;
@@ -32,6 +39,24 @@ public abstract class Persons {
         }
     }
 
+    public List<String> getListOfChildren() {
+        return listOfChildren;
+    }
+
+    public void setListOfChildren(List<String> listOfChildren) {
+        this.listOfChildren = listOfChildren;
+    }
+
     public abstract void die();
 
+    @Override
+    public String toString() {
+        return "Persons{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", listOfChildren=" + listOfChildren +
+                '}';
+    }
 }
