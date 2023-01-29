@@ -13,6 +13,6 @@ public class Pensioners extends Persons {
     public void die() {
 
         System.out.println("Этот пенсионер умер, он заработал: " + (getAge() - 50) * pension);
-        System.out.println("Зато у меня " + listOfChildren.size() + " детей");
+        System.out.println("Зато у меня " + getChildren().size() + " детей");
     }
 }
