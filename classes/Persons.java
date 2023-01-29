@@ -9,7 +9,7 @@ public abstract class Persons {
     private int height;
     private int weight;
 
-    List<String> listOfChildren = new ArrayList<>();
+    private List<String> children;
 
     public Persons(String name, int age, int height, int weight) {
         this.name = name;
@@ -19,11 +19,6 @@ public abstract class Persons {
     }
 
     public Persons() {
-    }
-
-
-    public int getAge() {
-        return age;
     }
 
 
@@ -39,12 +34,25 @@ public abstract class Persons {
         }
     }
 
-    public List<String> getListOfChildren() {
-        return listOfChildren;
+    public void kids() {
+        System.out.println("У меня " + children.size() + " детей:");
+        for (int i = 0; i < children.size(); i++) {
+            System.out.println(i + 1 + ") " + children.get(i));
+        }
+
     }
 
-    public void setListOfChildren(List<String> listOfChildren) {
-        this.listOfChildren = listOfChildren;
+
+    public int getAge() {
+        return age;
+    }
+
+    public List<String> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<String> children) {
+        this.children = children;
     }
 
     public abstract void die();
@@ -56,7 +64,6 @@ public abstract class Persons {
                 ", age=" + age +
                 ", height=" + height +
                 ", weight=" + weight +
-                ", listOfChildren=" + listOfChildren +
                 '}';
     }
 }

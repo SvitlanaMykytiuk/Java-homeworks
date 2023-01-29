@@ -1,24 +1,46 @@
 package main;
 
+import classes.Company;
 import classes.Pensioners;
 import classes.Workers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        Workers worker = new Workers("Ivanov", 63, 175, 70, 1000, 2300);
+        Workers firstWorker = new Workers("Ivanov", 63, 175, 70, 1000, 2300);
 
-        System.out.println(worker.calculatePension());
-        System.out.println(worker.getListOfChildren().size());
+        List<String> listOfChildrenIvanov = List.of("Аня", "Оля", "Ваня");
+        firstWorker.setChildren(listOfChildrenIvanov);
 
-        worker.getListOfChildren().add("Anna");
-        worker.getListOfChildren().add("Oleg");
+        firstWorker.kids();
 
-        System.out.println(worker.calculatePension());
+        Company first = new Company();
+        first.setName("Audi");
+        Company second = new Company();
+        second.setName("BMW");
+        Company third = new Company();
+        third.setName("Opel");
+        Company fourth = new Company();
+        fourth.setName("Honda");
 
-        Pensioners pensioners = new Pensioners("Ivanov", 65, 190, 2000, 2500);
-        pensioners.getListOfChildren().add("Anna");
-        pensioners.getListOfChildren().add("Oleg");
+        List<Company> listOfCompaniesIvanov = List.of(first, second, third, fourth);
+        firstWorker.setCompanies(listOfCompaniesIvanov);
+
+        firstWorker.workExperience();
+
+        System.out.println("----------------------------------");
+        Pensioners pensioners = new Pensioners("Petrov", 65, 190, 2000, 2500);
+
+        List<String> listOfChildrenPetrov = new ArrayList<>();
+        listOfChildrenPetrov.add("Аня");
+        listOfChildrenPetrov.add("Оля");
+        listOfChildrenPetrov.add("Ваня");
+        listOfChildrenPetrov.add("Петя");
+
+        pensioners.setChildren(listOfChildrenPetrov);
 
         pensioners.die();
     }
