@@ -37,14 +37,10 @@ public class Main {
 
         workerIvanov.kids();
 
-        Company first = new Company();
-        first.setName("Audi");
-        Company second = new Company();
-        second.setName("BMW");
-        Company third = new Company();
-        third.setName("Opel");
-        Company fourth = new Company();
-        fourth.setName("Honda");
+        Company first = new Company("Audi");
+        Company second = new Company("BMW");
+        Company third = new Company("Opel");
+        Company fourth = new Company("Honda");
 
         List<Company> listOfCompaniesIvanov = List.of(first, second, third, fourth);
         workerIvanov.setCompanies(listOfCompaniesIvanov);
