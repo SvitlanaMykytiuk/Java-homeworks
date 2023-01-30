@@ -36,8 +36,11 @@ public abstract class Persons {
 
     public void kids() {
         System.out.println("У меня " + children.size() + " детей:");
-        for (int i = 0; i < children.size(); i++) {
-            System.out.println(i + 1 + ") " + children.get(i).name);
+
+        int index = 1;
+        for (Persons kids : children) {
+            System.out.println(index + ") " + kids.name);
+            index++;
         }
 
     }
