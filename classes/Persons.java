@@ -9,7 +9,7 @@ public abstract class Persons {
     private int height;
     private int weight;
 
-    private List<String> children;
+    private List<Persons> children;
 
     public Persons(String name, int age, int height, int weight) {
         this.name = name;
@@ -37,7 +37,7 @@ public abstract class Persons {
     public void kids() {
         System.out.println("У меня " + children.size() + " детей:");
         for (int i = 0; i < children.size(); i++) {
-            System.out.println(i + 1 + ") " + children.get(i));
+            System.out.println(i + 1 + ") " + children.get(i).name);
         }
 
     }
@@ -47,11 +47,11 @@ public abstract class Persons {
         return age;
     }
 
-    public List<String> getChildren() {
+    public List<Persons> getChildren() {
         return children;
     }
 
-    public void setChildren(List<String> children) {
+    public void setChildren(List<Persons> children) {
         this.children = children;
     }
 
