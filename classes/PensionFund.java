@@ -21,17 +21,16 @@ public class PensionFund {
     }
 
 
-    public double countPension(int workingYears, double minSalary, double maxSalary, int quantityOfChildren) {
+    public double countPension(int workingYears, double minSalary, double maxSalary) {
         double average = 0;
         int quantityOfKids;
-        double minSalaryWithKids = minSalary + quantityOfChildren * 200;
 
         switch (isState) {
             case STATE:
-                average = AverageUtils.getAverage(minSalaryWithKids, maxSalary);
+                average = AverageUtils.getAverage(minSalary, maxSalary);
                 break;
             case NOT_STATE:
-                average = AverageUtils.getAverage(minSalaryWithKids, maxSalary, AVERAGE_SALARY);
+                average = AverageUtils.getAverage(minSalary, maxSalary, AVERAGE_SALARY);
                 break;
             case SCAMMERS:
                 average = 0;

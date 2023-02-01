@@ -40,7 +40,9 @@ public class Workers extends Persons implements AbleToCalculatePension {
 
         PensionFund pensionFund = new PensionFund("nameOfFund", TypeOfState.STATE, "28-10-200");
 
-        return pensionFund.countPension(getAge() - 18, minSalary, maxSalary, getChildren().size());
+        double additionForKids = getChildren().size() * 200;
+
+        return pensionFund.countPension(getAge() - 18, minSalary + additionForKids, maxSalary);
 
     }
 
