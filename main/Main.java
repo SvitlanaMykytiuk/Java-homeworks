@@ -1,17 +1,17 @@
 package main;
 
-import classes.Company;
-import classes.Pensioners;
-import classes.Persons;
-import classes.Workers;
+import classes.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) {
         Workers workerIvanov = new Workers("Ivanov", 63, 175, 70, 1000, 2300);
+
         Persons firstChildIvanov = new Persons("Аня", 12, 134, 40) {
             @Override
             public void die() {
@@ -44,8 +44,20 @@ public class Main {
 
         List<Company> listOfCompaniesIvanov = List.of(first, second, third, fourth);
         workerIvanov.setCompanies(listOfCompaniesIvanov);
-
         workerIvanov.workExperience();
+
+
+        PensionFund alfa = new PensionFund("Alfa", TypeOfState.STATE, "01.01.2001");
+        PensionFund beta = new PensionFund("Beta", TypeOfState.NOT_STATE, "01.01.2001");
+        PensionFund gamma = new PensionFund("Gamma", TypeOfState.SCAMMERS, "01.01.2001");
+
+        Set<PensionFund> set = new HashSet<>();
+        set.add(alfa);
+        set.add(beta);
+        set.add(gamma);
+
+        workerIvanov.setSet(set);
+        workerIvanov.calculatePension();
 
         System.out.println("----------------------------------");
         Pensioners pensionerPetrov = new Pensioners("Petrov", 65, 190, 2000, 2500);

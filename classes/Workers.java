@@ -5,7 +5,9 @@ import classes.Persons;
 import classes.TypeOfState;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Workers extends Persons implements AbleToCalculatePension {
 
@@ -13,6 +15,8 @@ public class Workers extends Persons implements AbleToCalculatePension {
     private double maxSalary;
 
     private List<Company> Companies;
+
+    Set<PensionFund> set;
 
 
     public Workers(String name, int age, int height, int weight, double minSalary, double maxSalary) {
@@ -37,13 +41,19 @@ public class Workers extends Persons implements AbleToCalculatePension {
 
     @Override
     public double calculatePension() {
-
-        PensionFund pensionFund = new PensionFund("nameOfFund", TypeOfState.STATE, "28-10-200");
-
         double additionForKids = getChildren().size() * 200;
+        double maxPension = 0;
+        String nameOfPensionFound = null;
 
-        return pensionFund.countPension(getAge() - 18, minSalary + additionForKids, maxSalary);
-
+        for (PensionFund pensionFound : set) {
+            double pension = pensionFound.countPension(getAge() - 18, minSalary + additionForKids, maxSalary);
+            if (pension > maxPension) {
+                maxPension = pension;
+                nameOfPensionFound = pensionFound.getName();
+            }
+        }
+        System.out.println("Наиболее выгодный персионный фонд: " + nameOfPensionFound + ", размер пенсии: " + maxPension);
+        return maxPension;
     }
 
     public void setNewSalary() {
@@ -57,5 +67,13 @@ public class Workers extends Persons implements AbleToCalculatePension {
 
     public void setCompanies(List<Company> companies) {
         Companies = companies;
+    }
+
+    public Set<PensionFund> getSet() {
+        return set;
+    }
+
+    public void setSet(Set<PensionFund> set) {
+        this.set = set;
     }
 }
