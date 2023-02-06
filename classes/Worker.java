@@ -1,25 +1,19 @@
 package classes;
 
-import classes.AbleToCalculatePension;
-import classes.Persons;
-import classes.TypeOfState;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Workers extends Persons implements AbleToCalculatePension {
+public class Worker extends Person implements AbleToCalculatePension {
 
     private double minSalary;
     private double maxSalary;
 
     private List<Company> Companies;
 
-    Set<PensionFund> set;
+    private Set<PensionFund> availablePensionFunds;
 
 
-    public Workers(String name, int age, int height, int weight, double minSalary, double maxSalary) {
+    public Worker(String name, int age, int height, int weight, double minSalary, double maxSalary) {
         super(name, age, height, weight);
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
@@ -43,16 +37,15 @@ public class Workers extends Persons implements AbleToCalculatePension {
     public double calculatePension() {
         double additionForKids = getChildren().size() * 200;
         double maxPension = 0;
-        String nameOfPensionFound = null;
 
-        for (PensionFund pensionFound : set) {
+
+        for (PensionFund pensionFound : availablePensionFunds) {
             double pension = pensionFound.countPension(getAge() - 18, minSalary + additionForKids, maxSalary);
             if (pension > maxPension) {
                 maxPension = pension;
-                nameOfPensionFound = pensionFound.getName();
             }
         }
-        System.out.println("Наиболее выгодный персионный фонд: " + nameOfPensionFound + ", размер пенсии: " + maxPension);
+
         return maxPension;
     }
 
@@ -69,11 +62,11 @@ public class Workers extends Persons implements AbleToCalculatePension {
         Companies = companies;
     }
 
-    public Set<PensionFund> getSet() {
-        return set;
+    public Set<PensionFund> getAvailablePensionFunds() {
+        return availablePensionFunds;
     }
 
-    public void setSet(Set<PensionFund> set) {
-        this.set = set;
+    public void setAvailablePensionFunds(Set<PensionFund> availablePensionFunds) {
+        this.availablePensionFunds = availablePensionFunds;
     }
 }
